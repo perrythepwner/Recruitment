@@ -2,7 +2,9 @@
 
 ![img](./assets/ChallengeBanner.jpg)
 ---
-![img](./assets/EventBanner.jpg)
+<p align="center">
+    <img src="./assets/EventBanner.jpg" />
+</p>
 
 > 10<sup>th</sup> May 2024 \
 Prepared By: perrythepwner \
@@ -52,7 +54,7 @@ contract Setup {
 
 ```
 
-This setup will deploy the challenge instance for us. It appears that a `TARGET` contract will be deployed with `10 ether` in it. To solve the challenge, the `isRectruited()` function must return true with the player address as argument.
+This setup will deploy the challenge instance for us. It appears that a `TARGET` contract will be deployed with `1 wei` in it. To solve the challenge, the `isRectruited()` function must return true with the player address as argument.
 
 **Recruitment.sol**
 ```solidity
@@ -103,7 +105,7 @@ contract Recruitment {
 }
 ```
 The `isRecruited()` function fetch the `crew` mapping that tracks wheter a player is recruited in the crew or not.  
-At `L35` it's possible to write the player address in this mapping.
+At `L41` it's possible to write the player address in this mapping.
 In order to reach this goal we have to satisfy the preceding require statements and therefore prevent the transaction from reverting.  
 Let's explore the conditions.
 
@@ -133,9 +135,9 @@ The second skill check is about "Stealthiness". In a real smart contract attack 
 
 ### Condition 5
 ```solidity
-require(gasleft() < 20000, "You lack engineering skills.");
+require(gasleft() <= 50000, "You lack engineering skills.");
 ```
-The third skill requires to be an "Engineer". Indeed players need to engineer their gas consumption by sending a transaction with very low gas avaiability such that when the execution reaches this point, there are no more than 20000 gas left.
+The third skill requires to be an "Engineer". Indeed players need to engineer their gas consumption by sending a transaction with very low gas avaiability such that when the execution reaches this point, there are no more than 50000 gas left.
 This can be accomplished by setting a gas threshold when calling the contract. Using [cast](https://book.getfoundry.sh/cast/) tool this can be done with the `--gas-limit` option.
 
 ### Condition 6
