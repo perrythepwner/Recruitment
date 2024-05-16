@@ -9,7 +9,7 @@
 > 10<sup>th</sup> May 2024 \
 Prepared By: perrythepwner \
 Challenge Author(s): perrythepwner \
-Difficulty: <font color=green>Easy</font>
+Difficulty: <font color=lightgreen>Very Easy</font>
 
 
 # Synopsis
